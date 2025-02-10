@@ -1,131 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            font-family: 'Montserrat', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            background-color: #f0f0f0;
-            color: #333;
-            background-image: url("path/to/your/background_image.jpg"); /* Add background image */
-            background-size: cover; /* Cover the entire background */
-            background-position: center; /* Center the background image */
-        }
-
-        #background-video-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1; /* Behind other content */
-        }
-
-        #background-video {
-            position: absolute;
-            top: 50%; /* Center vertically */
-            left: 50%; /* Center horizontally */
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%); /* Center using translate */
-            object-fit: cover;
-            opacity: 0.3; /* Adjust transparency here */
-        }
-
-        .content {
-            text-align: center;
-            z-index: 1;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 60px; /* Increased padding */
-            border-radius: 15px; /* More rounded corners */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* More prominent shadow */
-            max-width: 700px;
-            backdrop-filter: blur(5px); /* Add blur effect */
-        }
-
-        #logo {
-            max-width: 250px; /* Adjust logo size */
-            height: auto;
-            margin-bottom: 30px;
-        }
-
-        h1 {
-            font-size: 3.5em; /* Larger heading */
-            margin-bottom: 25px;
-            color: #007bff; /* Example heading color */
-        }
-
-        p {
-            font-size: 1.3em;
-            margin-bottom: 40px;
-            line-height: 1.6; /* Improve readability */
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-        }
-
-        .social-links a {
-            margin: 0 15px;
-            font-size: 1.5em; /* Adjust icon size */
-            color: #333;
-            transition: color 0.3s;
-        }
-
-
-        /* Responsive design */
-        @media (max-width: 600px) { /* Adjusted breakpoint */
-            .content {
-                padding: 40px;
-            }
-            h1 {
-                font-size: 2.5em;
-            }
-            p {
-                font-size: 1.1em;
-            }
-            #logo {
-                max-width: 200px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff7e5f, #feb47b);
+      font-family: 'Arial', sans-serif;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .background-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.5;
+    }
+    .background-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      opacity: 0.7;
+    }
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      max-width: 120px;
+      z-index: 2;
+    }
+    /* Plain text for the message */
+    .coming-soon, .stay-tuned {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      margin: 0;
+      text-align: center;
+    }
+    .coming-soon {
+      bottom: 80px;
+      font-size: 2.5rem;
+      font-weight: bold;
+      animation: slideUp 1.5s ease-out;
+    }
+    .stay-tuned {
+      bottom: 50px;
+      font-size: 1.2rem;
+      opacity: 0.8;
+      animation: fadeIn 3s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { transform: translate(-50%, 50px); opacity: 0; }
+      to { transform: translate(-50%, 0); opacity: 1; }
+    }
+    /* Responsive styling for mobile devices */
+    @media (max-width: 600px) {
+      .coming-soon {
+        font-size: 2rem;
+        bottom: 70px;
+      }
+      .stay-tuned {
+        font-size: 1rem;
+        bottom: 40px;
+      }
+      .logo {
+        top: 10px;
+        left: 10px;
+        max-width: 100px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-    <div id="background-video-container">
-        <video id="background-video" autoplay muted loop>
-            <source src="MEENA GROUP INTRO.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-
-    <div class="content">
-        <img id="logo" src="MEENA GROUP.png" alt="Your Logo">
-        <h1>Something Amazing is Coming Soon</h1>
-        <p>We're crafting an exceptional real estate experience tailored just for you.  Get ready to discover your dream property. Stay tuned for exciting updates!</p>
-        <div class="social-links">
-            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-        </div>
-    </div>
-
+  <img src="static/image6.jpg" alt="Real Estate Building" class="background-image">
+  <video autoplay muted loop class="background-video">
+    <source src="MEENA GROUP INTRO.mp4" type="video/mp4">
+  </video>
+  <img src="MEENA GROUP.png" alt="Company Logo" class="logo">
+  <h1 class="coming-soon">Something Amazing is Coming Soon</h1>
+  <p class="stay-tuned">Stay tuned for updates!</p>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      console.log("Page Loaded Successfully");
+    });
+  </script>
 </body>
 </html>
