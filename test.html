@@ -127,24 +127,6 @@
       transform: scale(1.05);
     }
 
-    
-
-    /* ---------------- WHATSAPP BUTTON ---------------- */
-    .whatsapp-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25D366;
-      color: white;
-      padding: 15px;
-      border-radius: 50px;
-      font-size: 18px;
-      text-decoration: none;
-    }
-
-    .whatsapp-button:hover {
-      transform: scale(1.1);
-    }
 
     /* ---------------- ABOUT US ---------------- */
     .about-section {
@@ -309,11 +291,34 @@
     }
 
     /* ---------------- FOOTER ---------------- */
+
+
     .footer-section {
+    position: relative;
     background-color: #1e293b;
     color: white;
-    padding: 60px 0;
+    padding: 100px 0;
+    overflow: hidden;
     border-top: 5px solid #ff7e5f;
+  }
+
+  .footer-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Keep the video visible behind the text */
+    opacity: 0.4;
+  }
+
+  .footer-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(0px); /* Remove heavy blur */
+    opacity: 0.4; /* Slight opacity to blend with footer */
+    z-index: 0;
   }
 
   .footer-container {
@@ -322,6 +327,8 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
   }
 
   .footer-left h2 {
@@ -348,12 +355,6 @@
     margin-bottom: 8px;
   }
 
-  .footer-center i {
-    color: #ff7e5f;
-    margin-right: 10px;
-  }
-
-  /* Right Section (Social Media) */
   .footer-right h3 {
     font-size: 1.5rem;
     margin-bottom: 15px;
@@ -380,6 +381,7 @@
     border-top: 1px solid #ffffff22;
   }
 
+
   /* Responsive Design */
   @media (max-width: 768px) {
     .footer-container {
@@ -393,6 +395,52 @@
 
     .social-icons a {
       margin-right: 10px;
+    }
+  }
+
+    /* ---------------- WHATSAPP BUTTON ---------------- */
+  .whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+  }
+
+  .whatsapp-button a {
+    background-color: #25D366;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .whatsapp-button a img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+  }
+
+  .whatsapp-button a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  /* RESPONSIVE VIEW */
+  @media (max-width: 600px) {
+    .whatsapp-button a {
+      padding: 12px 15px;
+      font-size: 14px;
+    }
+
+    .whatsapp-button a img {
+      width: 20px;
+      height: 20px;
     }
   }
 
@@ -473,51 +521,54 @@
   </section>
   
 
-<a href="https://wa.me/918888888888" class="whatsapp-button">
-   💬 Chat with Us
-</a>
+<div class="whatsapp-button">
+  <a href="https://wa.me/917878622323?text=Hello%20Meena%20Group,%20I%20am%20interested%20in%20your%20projects." target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    <span>Chat With Us</span>
+  </a>
+</div>
 
 <footer class="footer-section">
-    <div class="footer-container">
-      
-      <!-- Left Side: Company Name & Tagline -->
-      <div class="footer-left">
-        <h2>Meena Group</h2>
-        <p>Building Dreams, Creating Landmarks.</p>
-      </div>
+  <div class="footer-video">
+    <video autoplay muted loop playsinline>
+      <source src="static/meena_group_intro.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
   
-      <!-- Center: Contact Details -->
-      <div class="footer-center">
-        <h3>Corporate Address</h3>
-        <p><i class="fas fa-map-marker-alt"></i> Block 4, Doke Building, Savedi, Ahilyanagar, Maharashtra 414003</p>
-        
-        <h3>For Sales Enquiries</h3>
-        <p><i class="fas fa-phone"></i> +91 78786 22323</p>
-  
-        <h3>For Other Enquiries</h3>
-        <p><i class="fas fa-phone"></i> +91 77878 72323</p>
-  
-        <h3>Email</h3>
-        <p><i class="fas fa-envelope"></i> contact@meenagroup.co</p>
-      </div>
-  
-      <!-- Right Side: Social Media Links -->
-      <div class="footer-right">
-        <h3>Follow Us</h3>
-        <div class="social-icons">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
-        </div>
+  <div class="footer-container">
+    <div class="footer-left">
+      <h2>Meena Group</h2>
+      <p>Building Dreams, Creating Landmarks.</p>
+    </div>
+
+    <div class="footer-center">
+      <h3>Corporate Address</h3>
+      <p><i class="fas fa-map-marker-alt"></i> Block 4, Doke Building, Savedi, Ahilyanagar, Maharashtra 414003</p>
+
+      <h3>For Sales Enquiries</h3>
+      <p><i class="fas fa-phone"></i> +91 78786 22323</p>
+
+      <h3>Email</h3>
+      <p><i class="fas fa-envelope"></i> contact@meenagroup.co</p>
+    </div>
+
+    <div class="footer-right">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
       </div>
     </div>
-  
-    <!-- Bottom Copyright Text -->
-    <div class="footer-bottom">
-      <p>&copy; 2025 Meena Group. All Rights Reserved.</p>
-    </div>
-  </footer>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 Meena Group. All Rights Reserved.</p>
+  </div>
+</footer>
+
   
 <script>
 window.addEventListener('scroll', function() {
@@ -534,7 +585,6 @@ window.addEventListener("scroll", function () {
     aboutSection.classList.add('active');
   }
 });
-
 
 </script>
 
