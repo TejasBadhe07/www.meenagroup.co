@@ -1,131 +1,592 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            font-family: 'Montserrat', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            background-color: #f0f0f0;
-            color: #333;
-            background-image: url("path/to/your/background_image.jpg"); /* Add background image */
-            background-size: cover; /* Cover the entire background */
-            background-position: center; /* Center the background image */
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meena Group - Luxury Real Estate</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
 
-        #background-video-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1; /* Behind other content */
-        }
+    body {
+      background-color: #f5f5f5;
+      scroll-behavior: smooth;
+    }
 
-        #background-video {
-            position: absolute;
-            top: 50%; /* Center vertically */
-            left: 50%; /* Center horizontally */
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%); /* Center using translate */
-            object-fit: cover;
-            opacity: 0.3; /* Adjust transparency here */
-        }
+    /* ---------------- HEADER ---------------- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 100px;
+      background: rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      transition: all 0.3s ease-in-out;
+    }
 
-        .content {
-            text-align: center;
-            z-index: 1;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 60px; /* Increased padding */
-            border-radius: 15px; /* More rounded corners */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* More prominent shadow */
-            max-width: 700px;
-            backdrop-filter: blur(5px); /* Add blur effect */
-        }
+    header.scrolled {
+      background: rgba(0, 0, 0, 0.8);
+    }
 
-        #logo {
-            max-width: 250px; /* Adjust logo size */
-            height: auto;
-            margin-bottom: 30px;
-        }
+    .logo {
+      max-width: 150px;
+    }
 
-        h1 {
-            font-size: 3.5em; /* Larger heading */
-            margin-bottom: 25px;
-            color: #007bff; /* Example heading color */
-        }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-size: 1rem;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
 
-        p {
-            font-size: 1.3em;
-            margin-bottom: 40px;
-            line-height: 1.6; /* Improve readability */
-        }
+    nav a:hover {
+      color: #ff7e5f;
+    }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-        }
+    /* ---------------- HERO SECTION ---------------- */
+    .hero-section {
+      height: 100vh;
+      background-image: url('static/image4.jpg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+      text-align: center;
+    }
 
-        .social-links a {
-            margin: 0 15px;
-            font-size: 1.5em; /* Adjust icon size */
-            color: #333;
-            transition: color 0.3s;
-        }
+    .hero-section h1 {
+      font-size: 4rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-section p {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
 
 
-        /* Responsive design */
-        @media (max-width: 600px) { /* Adjusted breakpoint */
-            .content {
-                padding: 40px;
-            }
-            h1 {
-                font-size: 2.5em;
-            }
-            p {
-                font-size: 1.1em;
-            }
-            #logo {
-                max-width: 200px;
-            }
-        }
-    </style>
+    .cta-button:hover {
+      background-color: #feb47b;
+    }
+
+    /* ---------------- SECTION STYLING ---------------- */
+    section {
+      padding: 100px 0;
+      text-align: center;
+    }
+
+    .projects-section {
+      background-color: #f9f9f9;
+    }
+
+    .projects-section h2 {
+      margin-bottom: 50px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      padding: 20px;
+    }
+
+    .project-card {
+      background-color: white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .project-card h2 {
+      padding: 15px;
+      font-size: 1.2rem;
+    }
+
+    .project-card:hover {
+      transform: scale(1.05);
+    }
+
+
+    /* ---------------- ABOUT US ---------------- */
+    .about-section {
+      background-color: #f4f4f4;
+      padding: 100px 0;
+    }
+
+    .about-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .about-text {
+      flex-basis: 55%;
+    }
+
+    .about-text h2 {
+      font-size: 2.5rem;
+      color: #ff7e5f;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .about-text strong {
+      color: #ff7e5f;
+    }
+
+    /* ABOUT IMAGE SECTION */
+    .about-image {
+      flex-basis: 40%;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .about-image img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Fade-In Animation */
+    .about-section {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1.2s ease;
+    }
+
+    .about-section.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+      .about-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about-text {
+        margin-bottom: 30px;
+      }
+
+      .about-image {
+        flex-basis: 100%;
+      }
+    }
+
+
+
+    /* ---------------- CONTACT US ---------------- */
+
+    .contact-section {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+    }
+
+    .contact-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    }
+
+    .contact-section p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    opacity: 0.8;
+    }
+
+    .contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ffffff11;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    padding: 30px;
+    }
+
+    .input-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ff7e5f;
+    border-radius: 8px;
+    background-color: #ffffff11;
+    color: white;
+    outline: none;
+    transition: all 0.3s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+    border-color: #feb47b;
+    background-color: #ffffff22;
+    }
+
+    .contact-form textarea {
+    height: 150px;
+    resize: none;
+    }
+
+    .cta-button {
+      background-color: #ff7e5f;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .cta-button:hover {
+    background-color: #feb47b;
+    }
+
+    @media (max-width: 768px) {
+    .input-container {
+        flex-direction: column;
+    }
+    }
+
+    /* ---------------- FOOTER ---------------- */
+
+
+    .footer-section {
+    position: relative;
+    background-color: #1e293b;
+    color: white;
+    padding: 100px 0;
+    overflow: hidden;
+    border-top: 5px solid #ff7e5f;
+  }
+
+  .footer-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Keep the video visible behind the text */
+    opacity: 0.4;
+  }
+
+  .footer-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(0px); /* Remove heavy blur */
+    opacity: 0.4; /* Slight opacity to blend with footer */
+    z-index: 0;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-left h2 {
+    font-size: 2rem;
+    color: #ff7e5f;
+    margin-bottom: 10px;
+  }
+
+  .footer-left p {
+    font-size: 1rem;
+    opacity: 0.8;
+  }
+
+  /* Center Section (Contact Details) */
+  .footer-center h3 {
+    font-size: 1.2rem;
+    color: #ff7e5f;
+    margin-bottom: 10px;
+  }
+
+  .footer-center p {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 8px;
+  }
+
+  .footer-right h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .social-icons a {
+    text-decoration: none;
+    color: white;
+    margin-right: 15px;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  .social-icons a:hover {
+    color: #ff7e5f;
+    transform: scale(1.2);
+  }
+
+  /* Bottom Copyright Section */
+  .footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 0.9rem;
+    border-top: 1px solid #ffffff22;
+  }
+
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .footer-left, .footer-center, .footer-right {
+      margin-bottom: 30px;
+    }
+
+    .social-icons a {
+      margin-right: 10px;
+    }
+  }
+
+    /* ---------------- WHATSAPP BUTTON ---------------- */
+  .whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+  }
+
+  .whatsapp-button a {
+    background-color: #25D366;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .whatsapp-button a img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+  }
+
+  .whatsapp-button a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  /* RESPONSIVE VIEW */
+  @media (max-width: 600px) {
+    .whatsapp-button a {
+      padding: 12px 15px;
+      font-size: 14px;
+    }
+
+    .whatsapp-button a img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  </style>
 </head>
 <body>
 
-    <div id="background-video-container">
-        <video id="background-video" autoplay muted loop>
-            <source src="MEENA GROUP INTRO.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+<header>
+  <img src="MEENA GROUP.png" class="logo" alt="Meena Group Logo">
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="#about">About Us</a>
+    <a href="#contact">Contact Us</a>
+  </nav>
+</header>
+
+<section class="hero-section" id="home">
+  <h1>Welcome to Meena Group</h1>
+  <p>Building Luxurious Spaces Across Ahilyanagar</p>
+  <button class="cta-button" onclick="location.href='#contact'">Get In Touch</button>
+</section>
+
+<section class="projects-section" id="projects">
+  <h2>Our Projects</h2>
+  <div class="grid">
+    <div class="project-card">
+      <img src="static/image1.jpg">
+      <h2>Project 1</h2>
+    </div>
+    <div class="project-card">
+      <img src="static/image12.jpg">
+      <h2>Project 2</h2>
+    </div>
+    <div class="project-card">
+        <img src="static/image14.jpg">
+        <h2>Project 3</h2>
+    </div>
+  </div>
+</section>
+
+<section class="about-section" id="about">
+  <div class="about-container">
+    <div class="about-text">
+      <h2>About Us</h2>
+      <p>
+        Established in 2025, <strong>Meena Group</strong> is a dynamic and ambitious real estate startup, founded with a vision to redefine living standards across Maharashtra.
+      </p>
+      <p>
+        Our mission is to create spaces that combine <strong>modern aesthetics, luxury, and unparalleled comfort</strong> for families, businesses, and communities.
+      </p>
+      <p>
+        Although we are at the beginning of our journey, our team is driven by <strong>relentless passion and a commitment to excellence</strong> — ensuring that every project we undertake delivers timeless value. At Meena Group, we don't just build properties — we build <strong>trust, innovation, and a brighter future for everyone.</strong>
+      </p>
+    </div>
+    <div class="about-image">
+      <img src="static/image15.jpg" alt="About Us">
+    </div>
+  </div>
+</section>
+
+  
+
+<section class="contact-section" id="contact">
+    <h2>Contact Us</h2>
+    <p>We’d love to hear from you! Reach out to us and we'll get back to you ASAP.</p>
+    
+    <form class="contact-form">
+      <div class="input-container">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+      </div>
+      
+      <textarea placeholder="Your Message" required></textarea>
+      
+      <button type="submit" class="cta-button">Send Message</button>
+    </form>
+  </section>
+  
+
+<div class="whatsapp-button">
+  <a href="https://wa.me/917878622323?text=Hello%20Meena%20Group,%20I%20am%20interested%20in%20your%20projects." target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    <span>Chat With Us</span>
+  </a>
+</div>
+
+<footer class="footer-section">
+  <div class="footer-video">
+    <video autoplay muted loop playsinline>
+      <source src="static/meena_group_intro.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  
+  <div class="footer-container">
+    <div class="footer-left">
+      <h2>Meena Group</h2>
+      <p>Building Dreams, Creating Landmarks.</p>
     </div>
 
-    <div class="content">
-        <img id="logo" src="MEENA GROUP.png" alt="Your Logo">
-        <h1>Something Amazing is Coming Soon</h1>
-        <p>We're crafting an exceptional real estate experience tailored just for you.  Get ready to discover your dream property. Stay tuned for exciting updates!</p>
-        <div class="social-links">
-            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-        </div>
+    <div class="footer-center">
+      <h3>Corporate Address</h3>
+      <p><i class="fas fa-map-marker-alt"></i> Block 4, Doke Building, Savedi, Ahilyanagar, Maharashtra 414003</p>
+
+      <h3>For Sales Enquiries</h3>
+      <p><i class="fas fa-phone"></i> +91 78786 22323</p>
+
+      <h3>Email</h3>
+      <p><i class="fas fa-envelope"></i> contact@meenagroup.co</p>
     </div>
+
+    <div class="footer-right">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 Meena Group. All Rights Reserved.</p>
+  </div>
+</footer>
+
+  
+<script>
+window.addEventListener('scroll', function() {
+  var header = document.querySelector('header');
+  header.classList.toggle('scrolled', window.scrollY > 0);
+});
+
+window.addEventListener("scroll", function () {
+  const aboutSection = document.querySelector('.about-section');
+  const sectionPosition = aboutSection.getBoundingClientRect().top;
+  const screenHeight = window.innerHeight;
+
+  if (sectionPosition < screenHeight - 100) {
+    aboutSection.classList.add('active');
+  }
+});
+
+</script>
 
 </body>
 </html>
