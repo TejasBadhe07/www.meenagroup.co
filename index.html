@@ -744,6 +744,152 @@
       }
     }
 
+    /* ---------------- MOBILE OPTIMIZATIONS ---------------- */
+    @media (max-width: 768px) {
+      /* Improved Touch Targets */
+      nav a {
+        padding: 15px 25px;
+        margin: 10px 0;
+        font-size: 1.2rem;
+        min-width: 200px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      nav a:active {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(0.98);
+      }
+
+      .hamburger {
+        padding: 15px;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .hamburger span {
+        width: 30px;
+        height: 3px;
+        margin: 4px 0;
+      }
+
+      /* Mobile Navigation Menu */
+      nav {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+      }
+
+      nav.active {
+        left: 0;
+      }
+
+      /* Mobile Animations */
+      @keyframes slideIn {
+        from {
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      nav a {
+        animation: slideIn 0.3s ease forwards;
+        opacity: 0;
+      }
+
+      nav a:nth-child(1) { animation-delay: 0.1s; }
+      nav a:nth-child(2) { animation-delay: 0.2s; }
+      nav a:nth-child(3) { animation-delay: 0.3s; }
+      nav a:nth-child(4) { animation-delay: 0.4s; }
+
+      /* Project Cards Mobile Optimization */
+      .project-card {
+        margin: 10px;
+        transform: scale(0.98);
+        transition: transform 0.3s ease;
+      }
+
+      .project-card:active {
+        transform: scale(0.95);
+      }
+
+      .project-card img {
+        height: 200px;
+        object-fit: cover;
+      }
+
+      /* Contact Form Mobile Optimization */
+      .form-group input,
+      .form-group textarea {
+        padding: 16px;
+        font-size: 16px; /* Prevents zoom on iOS */
+      }
+
+      .form-group label {
+        font-size: 16px;
+      }
+
+      .cta-button {
+        padding: 18px;
+        font-size: 1.1rem;
+      }
+
+      /* Image Gallery Swipe Support */
+      .project-card {
+        touch-action: pan-y pinch-zoom;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      /* Performance Optimizations */
+      .project-card img {
+        loading: lazy;
+      }
+
+      /* Mobile Header */
+      header {
+        padding: 15px 20px;
+      }
+
+      .header-left {
+        gap: 15px;
+      }
+
+      .logo {
+        max-width: 120px;
+        height: 50px;
+      }
+    }
+
+    /* Add touch feedback for all interactive elements */
+    button, a, input, textarea {
+      -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Prevent text size adjustment */
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
+
   </style>
 </head>
 <body>
@@ -956,10 +1102,13 @@ window.addEventListener("scroll", function () {
   }
 });
 
-// Hamburger Menu Toggle
-const hamburger = document.querySelector('.hamburger');
+// Mobile Navigation Improvements
 const nav = document.querySelector('nav');
+const hamburger = document.querySelector('.hamburger');
+let touchStartX = 0;
+let touchEndX = 0;
 
+// Hamburger Menu Toggle
 hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('active');
   nav.classList.toggle('active');
@@ -972,6 +1121,47 @@ document.querySelectorAll('nav a').forEach(link => {
     nav.classList.remove('active');
   });
 });
+
+// Swipe gesture for mobile menu
+document.addEventListener('touchstart', e => {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+document.addEventListener('touchend', e => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+});
+
+function handleSwipe() {
+  if (touchEndX < touchStartX && nav.classList.contains('active')) {
+    // Swipe left to close menu
+    nav.classList.remove('active');
+    hamburger.classList.remove('active');
+  } else if (touchEndX > touchStartX && !nav.classList.contains('active')) {
+    // Swipe right to open menu
+    nav.classList.add('active');
+    hamburger.classList.add('active');
+  }
+}
+
+// Improved touch handling for project cards
+const projectCards = document.querySelectorAll('.project-card');
+projectCards.forEach(card => {
+  card.addEventListener('touchstart', () => {
+    card.style.transform = 'scale(0.98)';
+  });
+  
+  card.addEventListener('touchend', () => {
+    card.style.transform = 'scale(1)';
+  });
+});
+
+// Prevent default touch behaviors
+document.addEventListener('touchmove', e => {
+  if (e.target.classList.contains('project-card')) {
+    e.preventDefault();
+  }
+}, { passive: false });
 
 // Back to Top Button
 const backToTopButton = document.querySelector('.back-to-top');
