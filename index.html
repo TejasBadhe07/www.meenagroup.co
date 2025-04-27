@@ -202,17 +202,36 @@
 
     .projects-section {
       background-color: #f9f9f9;
+      padding: 100px 0;
+      text-align: center;
     }
 
     .projects-section h2 {
       margin-bottom: 50px;
+      font-size: 2.5rem;
+      color: #333;
+      position: relative;
+      display: inline-block;
+    }
+
+    .projects-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background-color: #ff7e5f;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 30px;
       padding: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
     }
 
     .project-card {
@@ -221,23 +240,89 @@
       border-radius: 10px;
       overflow: hidden;
       transition: all 0.3s;
+      position: relative;
     }
 
     .project-card img {
       width: 100%;
-      height: 200px;
+      height: 250px;
       object-fit: cover;
+      transition: transform 0.5s ease;
     }
 
-    .project-card h2 {
-      padding: 15px;
-      font-size: 1.2rem;
+    .project-card .project-info {
+      padding: 20px;
+      position: relative;
+      background: white;
+    }
+
+    .project-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .project-card p {
+      color: #666;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .project-card .project-features {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid #eee;
+    }
+
+    .project-card .feature {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: #666;
+    }
+
+    .project-card .feature i {
+      color: #ff7e5f;
     }
 
     .project-card:hover {
-      transform: scale(1.05);
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     }
 
+    .project-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.7));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .project-card:hover::before {
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 10px;
+      }
+
+      .project-card img {
+        height: 200px;
+      }
+    }
 
     /* ---------------- ABOUT US ---------------- */
     .about-section {
@@ -637,16 +722,67 @@
   <h2>Our Projects</h2>
   <div class="grid">
     <div class="project-card">
-      <img src="static/image1.jpg">
-      <h2>Project 1</h2>
+      <img src="static/image1.jpg" alt="Project 1">
+      <div class="project-info">
+        <h3>Luxury Apartments</h3>
+        <p>Modern living spaces with premium amenities and stunning views.</p>
+        <div class="project-features">
+          <div class="feature">
+            <i class="fas fa-bed"></i>
+            <span>3 BHK</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-ruler-combined"></i>
+            <span>1800 sq.ft</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Ahilyanagar</span>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="project-card">
-      <img src="static/image12.jpg">
-      <h2>Project 2</h2>
+      <img src="static/image12.jpg" alt="Project 2">
+      <div class="project-info">
+        <h3>Premium Villas</h3>
+        <p>Spacious villas with private gardens and luxury finishes.</p>
+        <div class="project-features">
+          <div class="feature">
+            <i class="fas fa-bed"></i>
+            <span>4 BHK</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-ruler-combined"></i>
+            <span>2500 sq.ft</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Ahilyanagar</span>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="project-card">
-        <img src="static/image14.jpg">
-        <h2>Project 3</h2>
+      <img src="static/image14.jpg" alt="Project 3">
+      <div class="project-info">
+        <h3>Business Complex</h3>
+        <p>State-of-the-art commercial spaces for modern businesses.</p>
+        <div class="project-features">
+          <div class="feature">
+            <i class="fas fa-building"></i>
+            <span>Office</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-ruler-combined"></i>
+            <span>5000 sq.ft</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Ahilyanagar</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
