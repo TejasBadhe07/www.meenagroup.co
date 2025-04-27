@@ -38,6 +38,12 @@
       padding: 15px 100px;
     }
 
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
     .logo {
       max-width: 150px;
       height: 70px;
@@ -543,12 +549,14 @@
 <body>
 
 <header>
-  <img src="./static/Meena Group-01.png" class="logo" alt="Meena Group Logo">
-  <button class="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
+  <div class="header-left">
+    <button class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <img src="./static/Meena Group-01.png" class="logo" alt="Meena Group Logo">
+  </div>
   <nav>
     <a href="#home">Home</a>
     <a href="#projects">Projects</a>
