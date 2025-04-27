@@ -409,287 +409,340 @@
     /* ---------------- CONTACT US ---------------- */
 
     .contact-section {
-    background: linear-gradient(135deg, #1e293b, #0f172a);
-    color: white;
-    padding: 100px 0;
-    text-align: center;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      color: white;
+      padding: 100px 0;
+      text-align: center;
     }
 
     .contact-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .contact-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background-color: #ff7e5f;
     }
 
     .contact-section p {
-    font-size: 1.2rem;
-    margin-bottom: 40px;
-    opacity: 0.8;
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      opacity: 0.8;
     }
 
     .contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #ffffff11;
-    border-radius: 15px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-    padding: 30px;
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+      padding: 40px;
     }
 
-    .input-container {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
+    .form-group {
+      position: relative;
+      margin-bottom: 30px;
     }
 
-    .contact-form input,
-    .contact-form textarea {
-    width: 100%;
-    padding: 15px;
-    border: 2px solid #ff7e5f;
-    border-radius: 8px;
-    background-color: #ffffff11;
-    color: white;
-    outline: none;
-    transition: all 0.3s ease;
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 15px;
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: white;
+      font-size: 1rem;
+      transition: all 0.3s ease;
     }
 
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-    border-color: #feb47b;
-    background-color: #ffffff22;
+    .form-group label {
+      position: absolute;
+      left: 15px;
+      top: 15px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1rem;
+      pointer-events: none;
+      transition: all 0.3s ease;
     }
 
-    .contact-form textarea {
-    height: 150px;
-    resize: none;
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #ff7e5f;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .form-group input:focus + label,
+    .form-group textarea:focus + label,
+    .form-group input:not(:placeholder-shown) + label,
+    .form-group textarea:not(:placeholder-shown) + label {
+      top: -10px;
+      left: 10px;
+      font-size: 0.8rem;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      padding: 0 5px;
+      color: #ff7e5f;
     }
 
     .cta-button {
       background-color: #ff7e5f;
       padding: 15px 40px;
       border: none;
-      border-radius: 5px;
+      border-radius: 50px;
       color: white;
       font-size: 1.2rem;
       text-transform: uppercase;
       cursor: pointer;
       transition: all 0.3s;
+      width: 100%;
+      font-weight: bold;
+      letter-spacing: 1px;
     }
 
     .cta-button:hover {
-    background-color: #feb47b;
+      background-color: #feb47b;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .cta-button:active {
+      transform: translateY(-1px);
     }
 
     @media (max-width: 768px) {
-    .input-container {
-        flex-direction: column;
-    }
+      .contact-form {
+        padding: 30px 20px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        padding: 12px;
+      }
     }
 
     /* ---------------- FOOTER ---------------- */
 
 
     .footer-section {
-    position: relative;
-    background-color: #1e293b;
-    color: white;
-    padding: 100px 0;
-    overflow: hidden;
-    border-top: 5px solid #ff7e5f;
-  }
-
-  .footer-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0; /* Keep the video visible behind the text */
-    opacity: 0.4;
-  }
-
-  .footer-video video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: blur(0px); /* Remove heavy blur */
-    opacity: 0.4; /* Slight opacity to blend with footer */
-    z-index: 0;
-  }
-
-  .footer-container {
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 1;
-  }
-
-  .footer-left h2 {
-    font-size: 2rem;
-    color: #ff7e5f;
-    margin-bottom: 10px;
-  }
-
-  .footer-left p {
-    font-size: 1rem;
-    opacity: 0.8;
-  }
-
-  /* Center Section (Contact Details) */
-  .footer-center h3 {
-    font-size: 1.2rem;
-    color: #ff7e5f;
-    margin-bottom: 10px;
-  }
-
-  .footer-center p {
-    font-size: 1rem;
-    opacity: 0.9;
-    margin-bottom: 8px;
-  }
-
-  .footer-right h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-  }
-
-  .social-icons a {
-    text-decoration: none;
-    color: white;
-    margin-right: 15px;
-    font-size: 1.5rem;
-    transition: transform 0.3s ease;
-  }
-
-  .social-icons a:hover {
-    color: #ff7e5f;
-    transform: scale(1.2);
-  }
-
-  /* Bottom Copyright Section */
-  .footer-bottom {
-    text-align: center;
-    padding-top: 20px;
-    font-size: 0.9rem;
-    border-top: 1px solid #ffffff22;
-  }
-
-
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .footer-container {
-      flex-direction: column;
-      text-align: center;
+      position: relative;
+      background-color: #1e293b;
+      color: white;
+      padding: 100px 0;
+      overflow: hidden;
+      border-top: 5px solid #ff7e5f;
     }
 
-    .footer-left, .footer-center, .footer-right {
-      margin-bottom: 30px;
+    .footer-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0; /* Keep the video visible behind the text */
+      opacity: 0.4;
+    }
+
+    .footer-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(0px); /* Remove heavy blur */
+      opacity: 0.4; /* Slight opacity to blend with footer */
+      z-index: 0;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-left h2 {
+      font-size: 2rem;
+      color: #ff7e5f;
+      margin-bottom: 10px;
+    }
+
+    .footer-left p {
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+
+    /* Center Section (Contact Details) */
+    .footer-center h3 {
+      font-size: 1.2rem;
+      color: #ff7e5f;
+      margin-bottom: 10px;
+    }
+
+    .footer-center p {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 8px;
+    }
+
+    .footer-right h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
     }
 
     .social-icons a {
-      margin-right: 10px;
+      text-decoration: none;
+      color: white;
+      margin-right: 15px;
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
     }
-  }
+
+    .social-icons a:hover {
+      color: #ff7e5f;
+      transform: scale(1.2);
+    }
+
+    /* Bottom Copyright Section */
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      font-size: 0.9rem;
+      border-top: 1px solid #ffffff22;
+    }
+
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-left, .footer-center, .footer-right {
+        margin-bottom: 30px;
+      }
+
+      .social-icons a {
+        margin-right: 10px;
+      }
+    }
 
     /* ---------------- WHATSAPP BUTTON ---------------- */
-  .whatsapp-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 999;
-  }
+    .whatsapp-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+    }
 
-  .whatsapp-button a {
-    background-color: #25D366;
-    color: white;
-    padding: 15px 20px;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-
-  .whatsapp-button a img {
-    width: 25px;
-    height: 25px;
-    margin-right: 10px;
-  }
-
-  .whatsapp-button a:hover {
-    transform: scale(1.05);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-  }
-
-  /* RESPONSIVE VIEW */
-  @media (max-width: 600px) {
     .whatsapp-button a {
-      padding: 12px 15px;
-      font-size: 14px;
+      background-color: #25D366;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .whatsapp-button a img {
-      width: 20px;
-      height: 20px;
+      width: 25px;
+      height: 25px;
+      margin-right: 10px;
     }
-  }
 
-  /* ---------------- BACK TO TOP BUTTON ---------------- */
-  .back-to-top {
-    position: fixed;
-    bottom: 30px;
-    left: 30px;
-    background-color: #ff7e5f;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 999;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    color: white;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 14px;
-  }
+    .whatsapp-button a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
 
-  .back-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-  }
+    /* RESPONSIVE VIEW */
+    @media (max-width: 600px) {
+      .whatsapp-button a {
+        padding: 12px 15px;
+        font-size: 14px;
+      }
 
-  .back-to-top:hover {
-    background-color: #feb47b;
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  }
+      .whatsapp-button a img {
+        width: 20px;
+        height: 20px;
+      }
+    }
 
-  .back-to-top i {
-    font-size: 18px;
-  }
-
-  @media (max-width: 768px) {
+    /* ---------------- BACK TO TOP BUTTON ---------------- */
     .back-to-top {
-      bottom: 20px;
-      left: 20px;
-      padding: 8px 15px;
-      font-size: 12px;
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      background-color: #ff7e5f;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      color: white;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 14px;
     }
-    
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background-color: #feb47b;
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
     .back-to-top i {
-      font-size: 16px;
+      font-size: 18px;
     }
-  }
+
+    @media (max-width: 768px) {
+      .back-to-top {
+        bottom: 20px;
+        left: 20px;
+        padding: 8px 15px;
+        font-size: 12px;
+      }
+      
+      .back-to-top i {
+        font-size: 16px;
+      }
+    }
 
   </style>
 </head>
@@ -810,20 +863,28 @@
   
 
 <section class="contact-section" id="contact">
-    <h2>Contact Us</h2>
-    <p>We'd love to hear from you! Reach out to us and we'll get back to you ASAP.</p>
+  <h2>Contact Us</h2>
+  <p>We'd love to hear from you! Reach out to us and we'll get back to you ASAP.</p>
+  
+  <form class="contact-form">
+    <div class="form-group">
+      <input type="text" id="name" placeholder=" " required>
+      <label for="name">Your Name</label>
+    </div>
     
-    <form class="contact-form">
-      <div class="input-container">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-      </div>
-      
-      <textarea placeholder="Your Message" required></textarea>
-      
-      <button type="submit" class="cta-button">Send Message</button>
-    </form>
-  </section>
+    <div class="form-group">
+      <input type="email" id="email" placeholder=" " required>
+      <label for="email">Your Email</label>
+    </div>
+    
+    <div class="form-group">
+      <textarea id="message" placeholder=" " required></textarea>
+      <label for="message">Your Message</label>
+    </div>
+    
+    <button type="submit" class="cta-button">Send Message</button>
+  </form>
+</section>
   
 
 <div class="whatsapp-button">
