@@ -555,6 +555,57 @@
     }
   }
 
+  /* ---------------- BACK TO TOP BUTTON ---------------- */
+  .back-to-top {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background-color: #ff7e5f;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .back-to-top:hover {
+    background-color: #feb47b;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .back-to-top i {
+    font-size: 18px;
+  }
+
+  @media (max-width: 768px) {
+    .back-to-top {
+      bottom: 20px;
+      left: 20px;
+      padding: 8px 15px;
+      font-size: 12px;
+    }
+    
+    .back-to-top i {
+      font-size: 16px;
+    }
+  }
+
   </style>
 </head>
 <body>
@@ -687,7 +738,11 @@
   </div>
 </footer>
 
-  
+<div class="back-to-top">
+  <i class="fas fa-arrow-up"></i>
+  <span>Back to Top</span>
+</div>
+
 <script>
 window.addEventListener('scroll', function() {
   var header = document.querySelector('header');
@@ -718,6 +773,24 @@ document.querySelectorAll('nav a').forEach(link => {
   link.addEventListener('click', () => {
     hamburger.classList.remove('active');
     nav.classList.remove('active');
+  });
+});
+
+// Back to Top Button
+const backToTopButton = document.querySelector('.back-to-top');
+
+window.addEventListener('scroll', () => {
+  if (window.pageYOffset > 300) {
+    backToTopButton.classList.add('visible');
+  } else {
+    backToTopButton.classList.remove('visible');
+  }
+});
+
+backToTopButton.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
   });
 });
 
